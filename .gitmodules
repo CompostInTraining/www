@@ -1,0 +1,3 @@
+[submodule "submodules/robots.txt"]
+	path = submodules/robots.txt
+	url = https://github.com/prplecake/robots.txt

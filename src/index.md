@@ -1,3 +1,6 @@
+
+![CiT patch](images/cit_patch.jpg)
+
 CompostInTraining.club was a Mastodon instance that existed sometime between
 April 2022 and July 2025.
 

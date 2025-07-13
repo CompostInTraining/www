@@ -1,0 +1,29 @@
+name: Update submodule robots.txt
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: 'update-submodules'
+  cancel-in-progress: true
+
+jobs:
+  update-submodule-robots-txt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Update submodules
+        run: git submodule update --remote submodules/robots.txt
+      - name: Commit changes
+        if: ${{ github.event_name != 'pull_request' }}
+        uses: devops-infra/action-commit-push@master
+        with:
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
+          commit_prefix: "[Workflow Commit] "
+          commit_message: "Updated submodules"
